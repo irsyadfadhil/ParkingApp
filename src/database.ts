@@ -6,7 +6,7 @@ export async function connect() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'demo_all',
+        database: 'parking_managemen',
         connectionLimit: 10
     });
     

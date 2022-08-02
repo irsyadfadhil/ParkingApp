@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h2 align="center">Coba Aplikasi Parking</h2>
+  <h2 align="center">Aplikasi Parking</h2>
 </p>
 
 # API Demo
@@ -14,10 +14,13 @@
 | Delete Data Parkiran | http://localhost:5000/parking/:id      |    DELETE |
 
 
-# Install Lib using in project
+# Install NPM ini 
 ```
 $ npm install --save express morgan
 $ npm install --save-dev typescript @types/express nodemon ts-node @types/morgan mysql2 types/mysql2
+$ npm install --save-dev jest
+$ npm install --save-dev ts-jest
+$ npx ts-jest config:init
 ```
 
 # Install Aplikasi Parking

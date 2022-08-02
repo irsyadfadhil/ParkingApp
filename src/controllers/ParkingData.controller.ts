@@ -17,6 +17,9 @@ export async function createParkingData(req: Request, res: Response) {
     for (let i = 1; i <= req.body.slot; i++){
         const angka = i++;
         await conn.query('INSERT INTO parking_data SET ?', [newPost]);
+        // await conn.query('INSERT INTO parking_data SET ?', [
+        //     level : req.body.body,
+        //     slot: angka]);
     }
 
     return res.json({
@@ -55,12 +58,21 @@ export async function InParkingData(req: Request, res: Response) {
     const id = req.params.id;
     const InParkingData: ParkingData = req.body;
     const conn = await connect();
-    const tempat_parkir = await conn.query('SELECT * FROM parking_data WHERE id = ?', [id]);
+    const tempat_parkir = await conn.query('SELECT * FROM parking_data WHERE id = ? or status = ?', [id ,'1']);
+
+    // if (tempat_parkir == null) {
+    //     return res.json({
+    //     message: 'Tempar Parking Penuh'});
+    // } else {
+    //     await conn.query('UPDATE parking_data SET ? WHERE id = ?', [InParkingData, id]);
+    //     return res.json(tempat_parkir[0]);
+    // }
+
     await conn.query('UPDATE parking_data SET ? WHERE id = ?', [InParkingData, id]);
     return res.json(tempat_parkir[0]);
 
     // return res.json({
-    //     message: ' "level": "B1", "slot": "10" '
+    // message: ' "level": "tempat_parkir[level]", "slot": "tempat_parkir[slot]" '
     // });
 }
 
@@ -68,12 +80,12 @@ export async function OutParkingData(req: Request, res: Response) {
     const id = req.params.id;
     const OutParkingData: ParkingData = req.body;
     const conn = await connect();
-    const tempat_parkir = await conn.query('SELECT * FROM parking_data WHERE id = ?', [id]);
+    const tempat_parkir = await conn.query('SELECT * FROM parking_data WHERE id = ? or status = ?', [id, '0']);
     await conn.query('UPDATE parking_data SET ? WHERE id = ?', [OutParkingData, id]);
     return res.json(tempat_parkir[0]);
 
     // return res.json({
-    //     message: 'Out Parking Data'
+    //     message: ' "level": "tempat_parkir[level]", "slot": "tempat_parkir[slot]" '
     // });
 }
 

@@ -88,20 +88,3 @@ export async function OutParkingData(req: Request, res: Response) {
     //     message: ' "level": "tempat_parkir[level]", "slot": "tempat_parkir[slot]" '
     // });
 }
-
-// export async function updatearticle(req: Request) {
-//     Article.findOneAndUpdate(
-//         { "Username": req.body.username, "Email": req.body.email, "Info": "Deactivate" },
-//         { "$set": { "Info": "Active" } },
-//         { "new": true },
-//         function (err, doc) {
-//             if (err) { // err: any errors that occurred
-//                 console.log(err);
-//             } else { // doc: the document before updates are applied if `new: false`
-//                 console.log(doc); // , the document returned after updates if `new  true`
-//                 console.log(doc.Info);
-//             }
-
-//         }
-//     );
-// };
